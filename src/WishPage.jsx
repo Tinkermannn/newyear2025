@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import Navbar from './assets/component/navbar';
+import Navbar from './assets/component/Navbar/Navbar';
+import Home from './assets/pages/Homepage/Home';
+import Ads from './assets/pages/Ads/Ads';
+import Landing from './assets/pages/Homepage/hotelview2.jpg';
 
 export default function App() {
   // const [nama, setNama] = useState('');
@@ -10,10 +13,25 @@ export default function App() {
   //   console.log(`Nama: ${nama}, Wish: ${wish}`);
   //   // Tambahkan logika lain jika perlu, misalnya mengirim data ke server.
   // };
+  const slides = [
+    Landing,
+    Landing,
+    Landing,
+    Landing,
+  ];
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
+      <Home />
+      <Ads>
+        {slides.map((s, index) => (
+          <img 
+          key={index} 
+          src={s} 
+          alt={`Slide ${index}`} />
+        ))}
+      </Ads>
       {/* <div>
         <form onSubmit={handleSubmit}>
           <input
