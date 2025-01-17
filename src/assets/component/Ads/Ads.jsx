@@ -20,7 +20,7 @@ export default function Ads({
     }, []);
     
     return (
-        <div className="w-screen h-[400px] flex items-center justify-center">
+        <div className="w-full h-[400px] flex items-center justify-center bg-gray-100 flex-col">
 <div className="overflow-hidden relative h-[80%] w-[50%]">
             <div
                 className="flex transition-transform ease-out duration-500"
@@ -44,7 +44,7 @@ export default function Ads({
             </div>
 
             <div className="absolute bottom-4 right-0 left-0">
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-1">
                     {slides.map((_, i) => (
                         <div
                             className={`
@@ -56,6 +56,11 @@ export default function Ads({
                 </div>
             </div>
         </div>
+            <div className="w-full h-[2px] bottom-0 ">
+                <div className="h-full w-full bg-blue-500 mt-10">
+                    
+                </div>
+            </div>
         </div>
         
     );
