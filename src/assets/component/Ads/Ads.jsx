@@ -45,7 +45,7 @@ export default function Ads({
 
             <div className="absolute bottom-4 right-0 left-0">
                 <div className="flex items-center justify-center gap-1">
-                    {slides.map((_, i) => (
+                    {slides.map((key, i) => (
                         <div
                             className={`
               transition-all w-3 h-3 bg-white rounded-full
@@ -56,7 +56,7 @@ export default function Ads({
                 </div>
             </div>
         </div>
-            <div className="w-full h-[2px] bottom-0 ">
+            <div className="w-full h-[1px] bottom-0 ">
                 <div className="h-full w-full bg-blue-500 mt-10">
                     
                 </div>

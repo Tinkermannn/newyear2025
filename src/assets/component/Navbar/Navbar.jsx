@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Logo from "../Navbar/messi.jpg";
+import {useNavigate } from 'react-router-dom';
+
 
 export default function Navbar() {
+    const navigate = useNavigate();
+
     const listStyle =
         "text-white font-medium w-[25%] h-full flex items-center justify-center rounded-md transition-all delay-75 cursor-pointer hover:bg-blue-400 hover:scale-105 active:bg-blue-700 focus:ring-white";
 
@@ -37,7 +41,9 @@ export default function Navbar() {
                             Yuk Pesan Sekarang!
                         </a>
                         <div className="w-[15%] h-full ">
-                            <button className="bg-blue-400 hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 w-full h-full text-blue-50 font-semibold rounded-[5px]">
+                            <button className="bg-blue-400 hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 w-full h-full text-blue-50 font-semibold rounded-[5px]
+                            "
+                            onClick={()=> navigate('/register')}>
                                 Register
                             </button>
                         </div>

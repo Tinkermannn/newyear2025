@@ -15,8 +15,8 @@ export default function Home() {
                 }}
             >
                 <div className="w-full h-full bg-gradient-to-r from-black/50 via-blue-200/10 to-black/50 ">
-                    <div className="min-w-full h-full items-center flex m-auto max-w-[1000px]">
-                        <div className="w-full h-[200px] py-10 px-20">
+                    <div className="w-full h-full items-center flex m-auto max-w-screen-2xl px-20">
+                        <div className="w-full h-[200px] py-10">
                             <div className="w-[50%] h-full flex flex-col">
                                 <a className="font-bold text-white text-[2.5rem] break-words">
                                     Temukan tempat pilihanmu di sini!
