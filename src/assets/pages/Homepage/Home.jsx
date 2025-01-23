@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Landing from "../Homepage/hotelview2.jpg";
 import Ads from "../../component/Ads/Ads";
 import Product from "../../component/Product/Product";
