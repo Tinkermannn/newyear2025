@@ -1,16 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "react-feather";
+import { Slide, ToastContainer,toast } from "react-toastify";
 import LoginPics from '../../pages/Register/login.png'
 import BG from '../../component/Product/batik.png'
+import axios from "axios";
+
 export default function Login() {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false); // State untuk password input
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State untuk confirm input
+
+    const [email, setEmail] = useState(""); // State untuk email
+    const [password, setPassword] = useState(""); // State untuk password
+    const [error, setError] = useState(""); // State untuk menyimpan pesan error
+
 
     const quote =[
         "EASIER",
         "BETTER",
         "SIMPLER",
     ];
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+    
+        try {
+            const response = await axios.post("http://localhost:8000/user/login", { email, password });
+    
+            // Simpan token
+            localStorage.setItem("token", response.data.token);
+    
+            // Redirect ke dashboard
+            toast.success("Login berhasil!");
+            navigate("/dashboard");
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Login gagal");
+        }
+    };
 
     return (
         <>
@@ -25,7 +51,8 @@ export default function Login() {
                                 You can crate an account to access our services.
                             </p>
                         </div>
-                        <form className="w-full h-[60%] py-5 grid grid-rows-4 gap-20 ">
+                        <form className="w-full h-[60%] py-5 grid grid-rows-4 gap-20 " 
+                        onSubmit={handleLogin}>
                             <div>
                                 <label className="font-semibold text-blue-700 ">Email</label>
                                 <input
@@ -33,6 +60,8 @@ export default function Login() {
                                     type="email"
                                     name="email"
                                     placeholder="example@email.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -44,6 +73,8 @@ export default function Login() {
                                         name="password"
                                         id="passwordInput"
                                         placeholder="Enter your password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <div className="w-5 h-10 absolute mt-2 flex items-center mr-2 cursor-pointer"
                                         onClick={() => setShowPassword((prev) => !prev)} // CALLBACK
@@ -58,6 +89,10 @@ export default function Login() {
                                 >
                                     <p className="text-white font-medium ">Sign In</p>
                                 </button>
+                                <ToastContainer
+                                position="top-center"
+                                autoClose={2000}
+                                transition={Slide}/>
                             </div>
                             <div className="w-full h-[60px] flex items-center flex-col gap-2">
                                 <p className="text-center font-bold">OR</p>
@@ -65,6 +100,8 @@ export default function Login() {
 
                                 </div>
                             </div>
+                            {error && <div className="text-blue-600-500 text-sm">{error}</div>}
+
                         </form>
                     </div>
                     <div className="w-[60%] h-full flex flex-col bg-cover rounded-r-xl "

@@ -20,15 +20,15 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="w-full h-full flex flex-col gap-2">
-                                <p className="text-xl text-white font-semibold">Office</p>
-                            <div className="w-full">
+                            <p className="text-xl text-white font-semibold">Office</p>
+                            <div className="h-[40%]">
                                 <p className="text-sm text-white font-light text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                             </div>
-                            <div className="w-full h-full flex flex-row gap-3 items-center">
+                            <div className="w-full h-[25%] flex flex-row gap-2 items-center">
                                 <Phone size={15} color="white"/>
                                 <p className="text-sm text-white font-light text-justify">08812345678</p>
                             </div>
-                            <div className="w-full h-full flex flex-row gap-3 items-center">
+                            <div className="w-full h-[25%] flex flex-row gap-2 items-center">
                                 <Mail size={15} color="white"/>
                                 <p className="text-sm text-white font-light text-justify">example@gmai.com</p>
                             </div>

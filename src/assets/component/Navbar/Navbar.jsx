@@ -4,7 +4,6 @@ import {useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const navigate = useNavigate();
-
     const listStyle =
         "text-white font-medium w-[15%] h-full flex items-center justify-center rounded-md transition-all delay-75 cursor-pointer hover:bg-blue-400 hover:scale-105 active:bg-blue-700 focus:ring-white";
 
@@ -19,7 +18,8 @@ export default function Navbar() {
             <div className="fixed top-0 w-screen flex justify-center items-center px-20 py-5 z-10">
                 <div className="bg-gradient-to-br bg from-blue-800 to-blue-400 px-5 py-3 w-screen justify-between items-center flex rounded-md drop-shadow-lg">
                     <div className="w-[10%]">
-                        <img src={Logo} className="h-10" />
+                        <img src={Logo} className="h-10 cursor-pointer"
+                        onClick={()=> navigate('/')}/>
                     </div>
                     <div className="w-[40%] h-10 flex select-none">
                         <ul className=" list-none w-full flex justify-start cursor-pointer">

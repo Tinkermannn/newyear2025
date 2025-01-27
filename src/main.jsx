@@ -7,6 +7,8 @@ import App from "./App.jsx";
 import Home from "./assets/pages/Homepage/Home";
 import Register from "./assets/pages/Register/register.jsx";
 import Login from "./assets/pages/Login/login.jsx";
+import Dashboard from "./assets/pages/Dashboard/Dashboard.jsx";
+import GlobalError from "./assets/component/Error/GlobalError.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,13 +25,21 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard/>,
+      },
+      {
+        path: "*",
+        element: <GlobalError/>,
       }
     ],
   },
   {
     path: "/",
     element: <Navigate to="/home" />,
-  },
+  }
 ]);
 
 const rootElement = document.getElementById("root");
