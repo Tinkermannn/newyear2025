@@ -26,7 +26,7 @@ export default function Dashboard() {
             try {
                 // Modify the URL to match your backend route
                 const response = await axios.get(
-                    "http://localhost:8000/user/dashboard",
+                    "https://renter2025.vercel.app/user/dashboard",
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     }
@@ -81,7 +81,7 @@ export default function Dashboard() {
 
                         // Update profile picture ke backend
                         await axios.post(
-                            "http://localhost:8000/user/upload",
+                            "https://renter2025.vercel.app/user/upload",
                             { imageUrl: uploadedImageUrl },
                             { headers: { Authorization: `Bearer ${token}` } }
                         );

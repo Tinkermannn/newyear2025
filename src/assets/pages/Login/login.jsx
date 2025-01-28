@@ -25,7 +25,7 @@ export default function Login() {
         e.preventDefault();
     
         try {
-            const response = await axios.post("http://localhost:8000/user/login", { email, password });
+            const response = await axios.post("https://renter2025.vercel.app/user/login", { email, password });
     
             // Simpan token
             localStorage.setItem("token", response.data.token);
