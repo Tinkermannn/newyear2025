@@ -72,7 +72,7 @@ export default function Form() {
 
                 // Simpan post ke backend
                 await axios.post(
-                    "https://renter2025.vercel.app/user/upload-post",
+                    "https://renter-be.vercel.app/user/upload-post",
                     {
                         title: formData.title,
                         price: formData.price,

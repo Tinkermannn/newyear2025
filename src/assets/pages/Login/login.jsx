@@ -25,7 +25,7 @@ export default function Login() {
         e.preventDefault();
     
         try {
-            const response = await axios.post("https://renter2025.vercel.app/user/login/", { email, password });
+            const response = await axios.post("https://renter-be.vercel.app/user/login", { email, password });
     
             // Simpan token
             localStorage.setItem("token", response.data.token);
@@ -34,6 +34,7 @@ export default function Login() {
             toast.success("Login berhasil!");
             navigate("/dashboard");
         } catch (error) {
+            console.log(error);
             toast.error(error.response?.data?.message || "Login gagal");
         }
     };
