@@ -27,7 +27,7 @@ export default function Register() {
 
         try {
             await toast.promise(
-                axios.post('http://localhost:8000/user/register', {
+                axios.post('https://renter-be.vercel.app//user/register', {
                     email: email,
                     password: password,
                 }),
