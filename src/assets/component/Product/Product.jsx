@@ -10,7 +10,7 @@ export default function Product() {
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/user/posts/");
+            const response = await axios.get("https://renter-be.vercel.app/user/posts");
             setPosts(response.data.posts);
         } catch (err) {
             setError("Gagal mengambil data dari server");
