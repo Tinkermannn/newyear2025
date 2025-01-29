@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Eye, EyeOff } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -46,10 +46,12 @@ export default function Register() {
         }
     };
 
+
+
     return (
         <>
             <div className="w-full h-screen m-auto flex">
-                <div className="w-full h-[570px] px-20 pt-[50px] flex items-center justify-start m-auto max-w-screen-2xl flex-row gap-0">
+                <div className="w-full h-[570px] px-20 pt-[50px] flex items-center justify-start m-auto max-w-screen-2xl flex-row gap-0 ">
                     <div className="w-[40%] h-full rounded-l-xl border-blue-800 border-solid border-2 shadow-xl px-5 py-5 text-left">
                         <div className="w-full h-[15%] flex items-center flex-col">
                             <p className="w-full font-semibold text-blue-800 text-2xl">

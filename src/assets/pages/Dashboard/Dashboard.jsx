@@ -6,6 +6,7 @@ import Form from "../../component/Form/Form";
 
 export default function Dashboard() {
     const navigate = useNavigate();
+    const API_KEY = import.meta.env.VITE_IMGBB_KEY;
     const [userData, setUserData] = useState({
         email: "",
         dateCreated: "",
@@ -71,7 +72,7 @@ export default function Dashboard() {
                 (async () => {
                     // Upload ke ImgBB
                     const imgbbResponse = await axios.post(
-                        "https://api.imgbb.com/1/upload?key=0ead1753d49a736c7a0f145d41e6870b",
+                        `https://api.imgbb.com/1/upload?key=${API_KEY}`,
                         formData,
                         { headers: { "Content-Type": "multipart/form-data" } }
                     );
@@ -113,7 +114,7 @@ export default function Dashboard() {
 
     return (
         <div className="w-full h-screen flex items-center m-auto">
-            <div className="w-full h-[550px] px-20 py-12 max-w-screen-2xl m-auto flex items-center flex-row gap-2">
+            <div className="w-full h-full px-20 py-16 mt-10 max-w-screen-2xl m-auto flex items-center flex-row gap-2">
                 <div className="w-[30%] h-full flex flex-col gap-2 p-5 justify-center border-2 border-blue-900/90 rounded-md">
                 <div className="w-full h-full flex flex-col">
                     
@@ -121,7 +122,6 @@ export default function Dashboard() {
                     <div className="flex flex-col items-center">
                         <img
                             src={userData.profilePicture}
-                            alt="Profile"
                             className="w-32 h-32 rounded-full object-cover my-4"
                         />
                         <div className="flex items-center justify-center gap-2">

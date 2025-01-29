@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function Form() {
+    const API_KEY = import.meta.env.VITE_IMGBB_KEY;
     const [fileName, setFileName] = useState(""); // Nama file
     const [profilePic, setProfilePic] = useState(null); // File gambar
     const [formData, setFormData] = useState({
@@ -54,7 +55,7 @@ export default function Form() {
             await toast.promise(
                 (async () => {
             const imgbbResponse = await axios.post(
-                "https://api.imgbb.com/1/upload?key=0ead1753d49a736c7a0f145d41e6870b",
+                `https://api.imgbb.com/1/upload?key=${API_KEY}`,
                 uploadFormData,
                 {
                     headers: { "Content-Type": "multipart/form-data" },
@@ -124,7 +125,7 @@ export default function Form() {
                             value={formData.price}
                             onChange={handleInputChange}
                             placeholder="20000"
-                            min={1000}
+                            min={100000}
                             className="px-3 py-2 rounded-lg"
                         />
                     </div>
@@ -149,9 +150,9 @@ export default function Form() {
                     </p>
                 </div>
 
-                <div className="flex min-h-20 max-h-32">
+                <div className="flex min-h-20 max-h-52  ">
                     <ReactQuill
-                        className="w-full bg-white max-h-32 mb-5 mt-2 overflow-scroll"
+                        className="w-full h-52 bg-white mb-5 mt-2 overflow-scroll"
                         theme="snow"
                         value={formData.description}
                         onChange={(value) =>

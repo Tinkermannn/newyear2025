@@ -5,12 +5,10 @@ import BG from "../Product/batik.png";
 
 export default function Product() {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
-    const fetchPosts = async () => {
+    const fetchPosts = async (props) => {
         try {
-            const response = await axios.get("https://renter-be.vercel.app/user/posts/");
+            const response = await axios.get("http://localhost:8000/user/posts/");
             setPosts(response.data.posts);
         } catch (err) {
             setError("Gagal mengambil data dari server");

@@ -9,6 +9,7 @@ import Register from "./assets/pages/Register/register.jsx";
 import Login from "./assets/pages/Login/login.jsx";
 import Dashboard from "./assets/pages/Dashboard/Dashboard.jsx";
 import GlobalError from "./assets/component/Error/GlobalError.jsx";
+import Blog from "./assets/pages/Blog/Blog.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <GlobalError/>,
+      },
+      {
+        path:"/blog/:post_id",
+        element: <Blog/>
       }
     ],
   },
