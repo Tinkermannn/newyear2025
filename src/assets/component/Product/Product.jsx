@@ -8,7 +8,7 @@ export default function Product() {
 
     const fetchPosts = async (props) => {
         try {
-            const response = await axios.get("http://localhost:8000/user/posts/");
+            const response = await axios.get("https://renter-be.vercel.app/user/posts/");
             setPosts(response.data.posts);
         } catch (err) {
             setError("Gagal mengambil data dari server");
@@ -22,9 +22,7 @@ export default function Product() {
     return (
         <div
             className="w-full h-[1000px] m-auto bg-cover bg-center"
-            style={{
-                backgroundImage: `url(${BG})`,
-            }}
+
         >
             <div className="w-full h-full bg-white/85 flex justify-center items-center">
                 <div className="w-full h-[85%] px-20 max-w-screen-2xl">
@@ -34,7 +32,8 @@ export default function Product() {
                         </p>
                     </div>
                     <div className="grid grid-cols-3 gap-5">
-                        {posts.map((item, index) => (
+                        {
+                            posts.map((item, index) => (
                             <Card key={index} CardData={item} />
                         ))}
                     </div>

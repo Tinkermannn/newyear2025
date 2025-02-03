@@ -15,7 +15,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="fixed top-0 w-screen flex justify-center items-center px-20 py-5 z-10">
+            <div className="fixed top-0 w-full flex justify-center items-center px-20 py-5 z-10">
                 <div className="bg-gradient-to-br bg from-blue-800 to-blue-400 px-5 py-3 w-screen justify-between items-center flex rounded-md drop-shadow-lg">
                     <div className="w-[10%]">
                         <img src={Logo} className="h-10 cursor-pointer"

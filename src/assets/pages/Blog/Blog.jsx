@@ -10,7 +10,7 @@ export default function Blog() {
     try {
       // Ubah URL untuk menggunakan path parameter post_id
       const response = await axios.get(
-        `http://localhost:8000/user/blog/${post_id}`
+        `https://renter-be.vercel.app/user/blog/${post_id}`
       );
       setBlog(response.data);
     } catch (err) {
