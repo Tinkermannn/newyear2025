@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
+import "swiper/css";
 
 export default function Ads({
     children: slides,
     autoSlide = false,
     autoSlideInterval = 3000,
 }) {
-    const [curr, setCurr] = useState(0);
-    const x = useMotionValue(0);
-    const xInput = [-100, 0, 100];
-    const opacityOutput = [0, 1, 0];
-    const opacity = useTransform(x, xInput, opacityOutput);
+    const [curr, setCurr] = useState(0);  // Start with the first slide (index 0)
+    const swiperRef = useRef(null); // Ref to access the Swiper instance
 
-    const prev = () => setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
-    const next = () => setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
+    const prev = () => {
+        swiperRef.current.swiper.slidePrev();
+    };
+    
+    const next = () => {
+        swiperRef.current.swiper.slideNext();
+    };
 
     useEffect(() => {
         if (!autoSlide) return;
@@ -22,49 +26,44 @@ export default function Ads({
         return () => clearInterval(slideInterval);
     }, [curr]);
 
-    const handleDragEnd = (event, info) => {
-        const offset = info.offset.x;
-        const velocity = info.velocity.x;
-
-        if (offset > 100 || velocity > 500) {
-            prev();
-        } else if (offset < -100 || velocity < -500) {
-            next();
-        }
-    };
-
     return (
         <div className="w-full h-[320px] flex items-center justify-center bg-gray-100 flex-col shadow-xl shadow-black overflow-hidden">
-            <div className="overflow-visible relative h-[80%] w-[30%]">
-                <motion.div
-                    className="flex"
-                    drag="x"
-                    dragConstraints={{ left: -((slides.length - 1) * 100) + "%", right: "0%" }}
-                    animate={{ x: `-${curr * 100}%` }}
-                    transition={{ ease: "easeOut", duration: 0.5 }}
-                    onDragEnd={handleDragEnd}
-                    style={{ x, opacity }}
-                >
-                    {slides.map((slide, i) => (
-                        <div
-                            key={i}
-                            className={`w-full flex-shrink-0 transition-opacity duration-500 ${curr === i ? "opacity-100" : "opacity-50 blur-sm"}`}
-                        >
-                            {slide}
-                        </div>
-                    ))}
-                </motion.div>
-                
-                <div className="absolute inset-0 flex items-center justify-between p-4">
-                    <button onClick={prev} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-                        <ChevronLeft size={40} />
-                    </button>
-                    <button onClick={next} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-                        <ChevronRight size={40} />
-                    </button>
-                </div>
+            <div className="overflow-visible relative h-[80%] w-full flex">
+            <Swiper
+    spaceBetween={20}
+    slidesPerView={3}
+    centeredSlides={true}  // Center the current slide
+    initialSlide={Math.floor(slides.length / 2)}  // Set the initial slide to the middle
+    onSlideChange={(swiper) => setCurr(swiper.activeIndex)}
+    loop={false}
+    ref={swiperRef}
+    speed={600} // Transisi lebih halus, kecepatan 600ms
+    effect="fade" // Gunakan efek fade untuk transisi lebih halus
+    fadeEffect={{
+        crossFade: true, // Pastikan ada transisi yang halus antar slide
+    }}
+    className="w-full h-[105%]"
+>
+    {slides.map((slide, i) => (
+        <SwiperSlide key={i}>
+            <div
+                className={`w-full flex-shrink-0 transition-opacity duration-500 items-center justify-center ${
+                    curr === i
+                        ? "opacity-100 blur-none"
+                        : curr === i - 1 || curr === i + 1
+                        ? `opacity-50 blur-sm scale-75 ${curr === i - 1 ? "-mx-14" : "mx-14"}`
+                        : "opacity-0"
+                }`}
+            >
+                {slide}
+            </div>
+        </SwiperSlide>
+    ))}
+</Swiper>
 
-                <div className="absolute bottom-4 right-0 left-0 items-end">
+                
+                {/* Indikator Posisi Slide */}
+                <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-1 z-10">
                     <div className="flex items-center justify-center gap-1">
                         {slides.map((_, i) => (
                             <div

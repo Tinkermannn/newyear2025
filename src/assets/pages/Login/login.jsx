@@ -21,7 +21,7 @@ export default function Login() {
 
         try {
             const response = await toast.promise(
-                axios.post("http://localhost:8000/user/login", 
+                axios.post("https://renter-be.vercel.app/user/login", 
                 {
                     email, 
                     password 

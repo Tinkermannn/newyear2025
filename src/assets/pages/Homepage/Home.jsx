@@ -2,6 +2,7 @@ import React from "react";
 import Landing from "../Homepage/hotelview2.jpg";
 import Ads from "../../component/Ads/Ads";
 import Product from "../../component/Product/Product";
+import Banner from "../../component/Banner/Banner";
 
 export default function Home() {
     const slides = [Landing, Landing, Landing, Landing];
@@ -27,6 +28,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+                   
                     <div className="w-full h-10 top-0 mt-[-20px] flex items-center justify-center">
                         <div className="h-full w-48 bg-white border-2 border-blue-700 rounded-md flex items-center justify-center">
                             <p className="text-center font-medium text-blue-700">
@@ -36,6 +38,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Banner/>
             <Ads>
                 {slides.map((s, index) => (
                     <img key={index} src={s} alt={`Slide ${index}`} />
