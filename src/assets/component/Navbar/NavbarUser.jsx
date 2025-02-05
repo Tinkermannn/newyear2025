@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Logo from "./Frame 1.png";
+import Logo from '../../component/Image/LogoRenter.png'
 
-export default function NavbarOther() {
+export default function NavbarUser() {
     const navigate = useNavigate();
 
 
@@ -22,9 +22,9 @@ export default function NavbarOther() {
         >
             <div className="bg-gradient-to-br from-blue-800 to-blue-400 px-5 py-3 w-screen flex justify-between items-center rounded-md drop-shadow-lg">
                 <div className="w-[10%]">
-                    <img src={Logo} className="h-10 cursor-pointer" onClick={() => navigate("/")} />
+                    <img src={Logo} className="h-10 cursor-pointer " onClick={() => navigate("/")} />
                 </div>
-                <div className="w-[40%] h-10 flex select-none">
+                <div className="w-[40%] h-15 flex select-none">
                     <ul className="list-none w-full flex justify-start cursor-pointer">
                         {menu.map((x) => (
                             <li key={x.text} className={listStyle}>

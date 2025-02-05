@@ -3,20 +3,23 @@ import axios from "axios";
 import Card from "./Card";
 import { motion } from "framer-motion";
 import ReactPaginate from "react-paginate";
+import Loading from "../Loading/Loading";
 
 export default function Product() {
     const [posts, setPosts] = useState([]); // Data semua produk
     const [error, setError] = useState(""); // Handle error
     const [itemOffset, setItemOffset] = useState(0); // Offset data
     const itemsPerPage = 6; // Jumlah item per halaman
+    const [loading, setLoading] = useState(true);
 
-    // Fetch data dari API
     const fetchPosts = async () => {
         try {
             const response = await axios.get("https://renter-be.vercel.app/user/posts/");
             setPosts(response.data.posts);
         } catch (err) {
             setError("Gagal mengambil data dari server");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -24,6 +27,7 @@ export default function Product() {
         fetchPosts();
     }, []);
 
+    if(loading) return <Loading/>
     // Menghitung data yang ditampilkan berdasarkan halaman
     const endOffset = itemOffset + itemsPerPage;
     const currentItems = posts.slice(itemOffset, endOffset);

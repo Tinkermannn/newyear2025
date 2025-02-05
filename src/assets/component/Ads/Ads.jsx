@@ -27,8 +27,8 @@ export default function Ads({
     }, [curr]);
 
     return (
-        <div className="w-full h-[320px] flex items-center justify-center bg-gray-100 flex-col shadow-xl shadow-black overflow-hidden">
-            <div className="overflow-visible relative h-[80%] w-full flex">
+        <div className="w-full h-[320px] flex items-center justify-center flex-col  overflow-hidden">
+            <div className="overflow-visible relative h-[80%] w-full flex max-w-screen-2xl">
             <Swiper
     spaceBetween={20}
     slidesPerView={3}
@@ -51,7 +51,7 @@ export default function Ads({
                     curr === i
                         ? "opacity-100 blur-none"
                         : curr === i - 1 || curr === i + 1
-                        ? `opacity-50 blur-sm scale-75 ${curr === i - 1 ? "-mx-14" : "mx-14"}`
+                        ? `opacity-50 blur-sm scale-[80%] ${curr === i - 1 ? "-mx-10" : "mx-10"}`
                         : "opacity-0"
                 }`}
             >

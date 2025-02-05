@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Instagram, Linkedin, Mail, Map, MapPin, Phone, PhoneCall } from "react-feather";
-import Logo from '../../component/Navbar/Frame 1.png'
+import Logo from '../../component/Image/LogoRenter.png'
 export default function Footer() {
     return (
         <>
@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className=" w-full h-full px-20 py-10 max-w-screen-2xl m-auto flex flex-row justify-between">
                     <div className="w-[45%] h-[full] flex flex-col gap-2">
                         <div className="w-full h-[45%] flex flex-row gap-2 items-center">
-                            <img src={Logo} className="w-[30%] h-full -ml-3" />
+                            <img src={Logo} className="w-[30%] h-full -ml-1" />
                             <div className="w-full h-full flex flex-col justify-between text-justify">
                                 <p className="w-full text-white text text-2xl font-semibold">
                                     RENTER
