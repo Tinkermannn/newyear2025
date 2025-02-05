@@ -3,7 +3,6 @@ import Landing from "../Homepage/hotelview2.jpg";
 import Ads from "../../component/Ads/Ads";
 import Product from "../../component/Product/Product";
 import Banner from "../../component/Banner/Banner";
-
 export default function Home() {
     const slides = [Landing, Landing, Landing, Landing];
 

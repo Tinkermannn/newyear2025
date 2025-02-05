@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Navbar/messi.jpg";
+import Logo from './Frame 1.png'
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function Navbar() {
                     <div className="w-[10%]">
                         <img
                             src={Logo}
-                            className="h-10 cursor-pointer"
+                            className=" cursor-pointer w-full h-[70px]"
                             onClick={() => navigate("/")}
                         />
                     </div>
@@ -97,7 +97,7 @@ export default function Navbar() {
                     <div className="w-[10%]">
                         <img
                             src={Logo}
-                            className="h-10 cursor-pointer"
+                            className="h-15 w-full cursor-pointer"
                             onClick={() => navigate("/")}
                         />
                     </div>

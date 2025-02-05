@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Navbar/messi.jpg";
+import Logo from "./Frame 1.png";
 
 export default function NavbarOther() {
     const navigate = useNavigate();
